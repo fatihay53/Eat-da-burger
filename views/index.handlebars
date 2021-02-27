@@ -1,0 +1,52 @@
+<h1 style="text-align: center;">Burger Saver </h1>
+
+<h3>Uneaten Burger</h3>
+
+<div class="row">
+	<div class="col-6">
+		<form action="/api/burger/{{id}}" method="POST"></form>
+		<ul class="list-group mb-5">
+			{{#each burger}}
+			<li class="list-group-item">
+				<b>{{this.burger_name}}</b>
+				<button class="btn btn-danger float-end">Devour it </button>
+			</li>
+
+			{{/each}}
+
+		</ul>
+
+	</div>
+
+	{{!-- <div class="col-6">
+		<form action="/api/burger/" method="POST"></form>
+		<ul class="list-group mb-5">
+			{{#each burger}}
+			<li class="list-group-item">
+				<b>{{this.burger_name}}</b>
+
+			</li>
+			<button id={{this.id}} onclick='updateBurger()' class="btn btn-danger float-end">Devour it </button>
+			{{/each}}
+
+		</ul>
+
+	</div> --}}
+
+
+
+
+</div>
+
+<script>
+	async function updateBurger(id) {
+
+		const editData = {
+			headers: { 'Content-Type': 'application/json' },
+			method: 'put',
+
+		}
+
+		fetch(`/api/${id}`, editData).then(res => res.json())
+	}
+</script>

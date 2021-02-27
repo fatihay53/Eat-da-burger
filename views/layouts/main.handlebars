@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="../../models/burger.js "> </script>
+	<script src="../../controllers/burgers_contoller.js"> </script>
+	<title>Burger Saver</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				{{{ body }}}
+			</div>
+
+			<div class="col-6">
+			<div id="burgerList"></div>
+			</div>
+
+		</div>
+			<div class="col-6">
+
+			<form action="/api/create" method="POST">
+
+				<input id="burgerName" style="150px" type="text" name="burgerName" class="form-control" placeholder="Please enter your favorite burger name" ></input>
+
+
+				<button id="submitBtn" class="btn btn-primary mx-auto">Submit</button>
+			</form>
+		</div>
+	
+	</div>
+
+		
+	
+
+
+
+</body>
+
+</html>
