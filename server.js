@@ -20,27 +20,30 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 
 app.set('view engine', 'handlebars');
 
-app.post('/api/create', async function(req, res){
+app.post('/api/create', async (req, res)=>{
   let input = req.body
   let result = await orm.insertOne(input)
   // console.log(result)
   res.redirect('/');
 })
 
-app.get('/', async function(req, res){
+app.get('/', async (req, res)=>{
     const burger = await orm.selectAll()
   // console.log(burger)
     // return it within handlebars
     res.render('index', { burger: burger });
 
 })
-app.post('/api/burger/:id', async function(req, res){
+app.post('/api/burger/:id', async (req, res)=>{
   const id =  req.params.id 
 
   const updateBurger = await orm.updateOne(id)
 
   res.redirect('/')
 })
+
+// var router = require('./controllers/burgers_controller')
+// app.use('/', router)
 
 
 app.listen(PORT, () =>
