@@ -7,13 +7,13 @@ const exphbs = require('express-handlebars');
 // Set the port of our application
 // process.env.PORT lets the port be set by Heroku
 
-const PORT = process.env.PORT || 5555;
+const PORT = process.env.PORT || 333;
 
 // for POSTING
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(__dirname));
 
-app.use(express.static('controllers'));
 
 // for HANDLEBARS paths
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
@@ -36,9 +36,9 @@ app.get('/', async function(req, res){
 })
 app.post('/api/burger/:id', async function(req, res){
   const id =  req.params.id 
-  console.log(id)
+
   const updateBurger = await orm.updateOne(id)
-  console.log('[/ PUT] updateBurger:', updateBurger);
+
   res.redirect('/')
 })
 
