@@ -3,6 +3,7 @@ var router = express.Router()
 const orm = require("../config/orm");
 
 
+
 router.get('/', async (req, res)=>{
     const burger = await orm.selectAll()
   // console.log(burger)
